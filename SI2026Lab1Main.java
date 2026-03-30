@@ -14,25 +14,11 @@ class Book {
         this.borrowed = false;
     }
 
-    public String getTitle() {
-        return title;
-    }
-
-    public String getAuthor() {
-        return author;
-    }
-
-    public String getGenre() {
-        return genre;
-    }
-
-    public boolean isBorrowed() {
-        return borrowed;
-    }
-
-    public void setBorrowed(boolean borrowed) {
-        this.borrowed = borrowed;
-    }
+    public String getTitle() { return title; }
+    public String getAuthor() { return author; }
+    public String getGenre() { return genre; }
+    public boolean isBorrowed() { return borrowed; }
+    public void setBorrowed(boolean borrowed) { this.borrowed = borrowed; }
 
     @Override
     public String toString() {
@@ -52,7 +38,12 @@ class Library {
     }
 
     // TODO: Implement in branch feature-search-books
-    public boolean searchBookByTitle(String title) {
+    public boolean searchByTitle(String title) {
+        for (Book book : books) {
+            if (book.getTitle().equals(title)) {
+                return true;
+            }
+        }
         return false;
     }
 
@@ -113,12 +104,11 @@ class Library {
 public class SI2026Lab1Main {
     public static void main(String[] args) {
         Library library = new Library();
-
         library.addBook(new Book("Clean Code", "Robert C. Martin", "Programming"));
         library.addBook(new Book("Effective Java", "Joshua Bloch", "Programming"));
         library.addBook(new Book("The Hobbit", "J.R.R. Tolkien", "Fantasy"));
         library.addBook(new Book("1984", "George Orwell", "Dystopian"));
-
         System.out.println("Library initialized.");
+        System.out.println("Search 'The Hobbit': " + library.searchByTitle("The Hobbit"));
     }
 }
