@@ -77,6 +77,11 @@ class Library {
     }
 
     public void printBooksByGenre(String genre) {
+        for (Book book : books) {
+            if (book.getGenre().equalsIgnoreCase(genre)) {
+                System.out.println(book);
+            }
+        }
     }
 
     public int countAvailableBooks() {
