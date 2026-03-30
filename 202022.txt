@@ -1,0 +1,45 @@
+=== ЧЕКОР 9 ===
+git checkout -b feature-search-books
+Креирана нова гранка feature-search-books и префрлување на неа.
+
+=== ЧЕКОР 12-13 ===
+git checkout master
+git merge feature-search-books
+Спојувањето беше FAST-FORWARD бидејќи master немал нови commits откако беше креирана гранката.
+
+git log --oneline --graph --all
+* d94d080 (HEAD -> master, origin/master) Merge feature-borrow-book into master
+|\
+| * bf9f9e5 (feature-borrow-book) Merge master into feature-borrow-book
+| |\
+| * | dd9f33d (origin/feature-borrow-book) Implement borrow book
+* | cb3f85f Merge branch 'feature-genre-report'
+|\ \
+| |/
+| * 5adaa98 (origin/feature-genre-report, feature-genre-report) Implement genre report
+* / 8bb8aa7 Update borrow message on master
+|/
+* 7105059 (origin/feature-search-books, feature-search-books) Implement book search
+* 95566fe Add starter code
+* 8c65c60 Initial commit
+
+=== ЧЕКОР 21-22 ===
+git checkout feature-borrow-book
+git merge master
+Настана КОНФЛИКТ во SI2026Lab1Main.java бидејќи и master и feature-borrow-book ја смениле пораката во borrowBook методот.
+Конфликтот го решив така што ја задржав пораката "Borrowed successfully." од feature-borrow-book.
+Merge стратегија: recursive merge.
+
+git status
+On branch feature-borrow-book
+Your branch is ahead of 'origin/feature-borrow-book' by 2 commits.
+nothing to commit, working tree clean
+
+=== ЧЕКОР 23 ===
+git checkout master
+git merge feature-genre-report
+Ова спојување беше RECURSIVE MERGE бидејќи master имал commit (Update borrow message on master) кој не постоел во feature-genre-report.
+
+=== ЧЕКОР 24 ===
+git merge feature-borrow-book
+Ова спојување беше RECURSIVE MERGE бидејќи feature-borrow-book имала своја историја која се разидувала од master.
