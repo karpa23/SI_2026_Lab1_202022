@@ -37,7 +37,6 @@ class Library {
         books.add(book);
     }
 
-    // TODO: Implement in branch feature-search-books
     public boolean searchByTitle(String title) {
         for (Book book : books) {
             if (book.getTitle().equals(title)) {
@@ -47,13 +46,12 @@ class Library {
         return false;
     }
 
-    // TODO: Implement in branch feature-borrow-book
     public void borrowBook(String title) {
         for (Book book : books) {
             if (book.getTitle().equalsIgnoreCase(title)) {
                 if (!book.isBorrowed()) {
                     book.setBorrowed(true);
-                    System.out.println("Book borrowed.");
+                    System.out.println("Borrowed successfully.");
                 } else {
                     System.out.println("Book is already borrowed.");
                 }
@@ -78,7 +76,6 @@ class Library {
         System.out.println("Book not found.");
     }
 
-    // TODO: Implement in branch feature-genre-report
     public void printBooksByGenre(String genre) {
     }
 
@@ -110,5 +107,6 @@ public class SI2026Lab1Main {
         library.addBook(new Book("1984", "George Orwell", "Dystopian"));
         System.out.println("Library initialized.");
         System.out.println("Search 'The Hobbit': " + library.searchByTitle("The Hobbit"));
+        library.borrowBook("The Hobbit");
     }
 }
